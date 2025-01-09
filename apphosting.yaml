@@ -1,0 +1,16 @@
+env:
+  # Get these values from the Firebase console
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyAWcbvnDsES5osCNn-8mpoa_HwOsV36LWw
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: ezra-dnd-22306.firebaseapp.com
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: ezra-dnd-22306
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: ezra-dnd-22306.firebasestorage.app
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: 963245715513
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:963245715513:web:ea0c934f4052b051e29de8
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    value: G-92CX31DECG
