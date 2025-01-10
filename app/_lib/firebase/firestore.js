@@ -1,18 +1,9 @@
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 
 import { db } from "@/app/_lib/firebase/clientApp";
 
-export async function getBanks(database = db) {
-  let q = query(collection(database, "banks"));
+export async function addWikiPage(database = db, wikiPageInfo) {
+  const docRef = await addDoc(collection(database, "wikiPages"), wikiPageInfo);
 
-  const results = await getDocs(q, orderBy("name", "asc"));
-  return results.docs.map((doc) => {
-    return {
-      id: doc.id,
-      creationDate: doc.data().creationDate.toDate(),
-      logoUrl: doc.data().logoUrl,
-      name: doc.data().name,
-      nickname: doc.data().nickname,
-    };
-  });
+  return docRef.id;
 }
