@@ -65,17 +65,18 @@ export default function RootLayout({
               <ul id="footer-info">
                 <li>
                   <p>
-                    This is a wiki page for <b>The Saga of Vizima</b> dungeons
+                    This is a wiki page for{" "}
+                    <b className="text-red-800">The Saga of Vizima</b> dungeons
                     and dragons campain
                   </p>
                 </li>
                 <li>
-                  <Button asChild variant="link" className="p-2">
-                    <Link href="/help">Help</Link>
-                  </Button>
-                  <Button asChild variant="link" className="p-2">
-                    <Link href="/about">About</Link>
-                  </Button>
+                  Created and maintained by Trent Mokoena for more info{" "}
+                  <b>
+                    <Link href="https://github.com/suburban-loner">
+                      click here
+                    </Link>
+                  </b>
                 </li>
               </ul>
               <Link href="#">
