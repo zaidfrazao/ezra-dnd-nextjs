@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SearchForm } from "@/components/search-form";
 import {
@@ -56,6 +57,39 @@ export default function RootLayout({
               </div>
             </header>
             <main className="flex flex-1 flex-col gap-4 p-4">{children}</main>
+            <footer
+              id="footer"
+              className="flex mw-footer justify-between"
+              role="contentinfo"
+            >
+              <ul id="footer-info">
+                <li>
+                  <p>
+                    This is a wiki page for <b>The Saga of Vizima</b> dungeons
+                    and dragons campain
+                  </p>
+                </li>
+                <li>
+                  <Button asChild variant="link" className="p-2">
+                    <Link href="/help">Help</Link>
+                  </Button>
+                  <Button asChild variant="link" className="p-2">
+                    <Link href="/about">About</Link>
+                  </Button>
+                </li>
+              </ul>
+              <Link href="#">
+                <div className="flex items-center justify-center">
+                  <Image
+                    src="/Footer-Logo.jpg"
+                    alt="Footer logo for the dnd campaign."
+                    width={100}
+                    height={100}
+                    className="rounded-full justify-end"
+                  />
+                </div>
+              </Link>
+            </footer>
           </SidebarInset>
         </SidebarProvider>
       </body>

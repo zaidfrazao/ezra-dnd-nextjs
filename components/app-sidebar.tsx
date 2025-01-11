@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarHeader,
   SidebarMenu,
@@ -75,7 +74,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <Link href="#">
               <div className="flex items-center justify-center">
                 <Image
-                  src="/Logo-dnd.jpg"
+                  src="/Logo.jpg"
                   alt="Logo for the dnd campaign."
                   width={100}
                   height={100}
@@ -112,14 +111,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <Link href="/Help" passHref>
-          <button>Help</button>
-        </Link>
-        <Link href="/Contact-form">
-          <button>Contact</button>
-        </Link>
-      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );
