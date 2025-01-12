@@ -21,6 +21,8 @@ export async function submitWikiDetails(formData) {
       wikiPageInfo
     );
 
+    console.log("New page created with ID:", pageId);
+
     redirect("/");
   } catch (error) {
     throw error;
