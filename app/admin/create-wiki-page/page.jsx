@@ -1,20 +1,32 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { submitWikiDetails } from "./actions";
 import React, { useState } from "react";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { submitWikiDetails } from "./actions";
+
 export default function CreateWikiPage() {
+  const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [contents, setContents] = useState("");
-
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     const newErrors = {};
+    if (!category.trim()) newErrors.category = "Category is required.";
     if (!title.trim()) newErrors.title = "Title is required.";
     if (!slug.trim()) {
       newErrors.slug = "Slug is required.";
@@ -40,6 +52,7 @@ export default function CreateWikiPage() {
 
       try {
         const formData = new FormData();
+        formData.append("category", category);
         formData.append("title", title);
         formData.append("slug", slug);
         formData.append("contents", contents);
@@ -47,6 +60,7 @@ export default function CreateWikiPage() {
         await submitWikiDetails(formData);
 
         alert("The form was successfully submitted!");
+        setCategory("");
         setTitle("");
         setSlug("");
         setContents("");
@@ -57,8 +71,20 @@ export default function CreateWikiPage() {
     }
   };
 
+  const formatSlug = (category, title) => {
+    const reformattedCategory = category
+      .toLowerCase()
+      .replace(" ", "-")
+      .replace(/[^a-zA-Z0-9-_]/g, "");
+    const reformattedTitle = title
+      .toLowerCase()
+      .replace(" ", "-")
+      .replace(/[^a-zA-Z0-9-_]/g, "");
+    setSlug(`/${reformattedCategory}/${reformattedTitle}`);
+  };
+
   return (
-    <div className="hidden space-y-6 p-10 pb-16 md:block">
+    <div className="hidden space-y-6 p-10 pb-16 md:block flex-1 lg:max-w-2xl">
       <div className="space-y-0.5">
         <h2 className="text-2xl font-bold tracking-tight">Create Wiki Page</h2>
         <p className="text-muted-foreground">
@@ -66,19 +92,45 @@ export default function CreateWikiPage() {
         </p>
       </div>
       <Separator />
-      <form action={handleSubmit}>
-        <div>
+      <form action={handleSubmit} className="space-y-8">
+        <div className="space-y-2">
+          <Label htmlFor="category">Category</Label>
+          <Select
+            id="category"
+            name="category"
+            value={category}
+            onValueChange={(value) => {
+              setCategory(value);
+              formatSlug(value, title);
+            }}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select a category" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="characters">Characters</SelectItem>
+              <SelectItem value="continents">Continents</SelectItem>
+            </SelectContent>
+          </Select>
+          {errors.category && <p className="text-red-500">{errors.category}</p>}
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="title">Title</Label>
           <Input
             id="title"
             name="title"
             type="text"
             placeholder="Title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              formatSlug(category, e.target.value);
+            }}
           />
           {errors.title && <p className="text-red-500">{errors.title}</p>}
         </div>
-        <div>
+        <div className="space-y-2">
+          <Label htmlFor="slug">Slug</Label>
           <Input
             id="slug"
             name="slug"
@@ -89,7 +141,8 @@ export default function CreateWikiPage() {
           />
           {errors.slug && <p className="text-red-500">{errors.slug}</p>}
         </div>
-        <div>
+        <div className="space-y-2">
+          <Label htmlFor="contents">Page Contents</Label>
           <Input
             id="contents"
             name="contents"
@@ -100,7 +153,7 @@ export default function CreateWikiPage() {
           />
           {errors.contents && <p className="text-red-500">{errors.contents}</p>}
         </div>
-        <Button type="submit">Add to Firebase</Button>
+        <Button type="submit">Add new page</Button>
       </form>
     </div>
   );
