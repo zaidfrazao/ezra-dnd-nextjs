@@ -11,6 +11,7 @@ export async function submitWikiDetails(formData) {
 
   try {
     const wikiPageInfo = {
+      category: formData.get("category"),
       title: formData.get("title"),
       slug: formData.get("slug"),
       contents: formData.get("contents"),

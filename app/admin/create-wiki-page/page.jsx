@@ -1,5 +1,6 @@
 "use client";
 
+import MDEditor from "@uiw/react-md-editor";
 import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -8,9 +9,7 @@ import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -30,19 +29,14 @@ export default function CreateWikiPage() {
     if (!title.trim()) newErrors.title = "Title is required.";
     if (!slug.trim()) {
       newErrors.slug = "Slug is required.";
-    } else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+    } else if (!/[^a-zA-Z0-9-_]/.test(slug)) {
       newErrors.slug = "Slug must be URL-friendly.";
     }
     return newErrors;
   };
 
   const handleSubmit = async (e) => {
-    if (e && e.preventDefault) {
-      e.preventDefault();
-    } else {
-      console.error("Invalid event object passed to handleSubmit:", e);
-      return;
-    }
+    e.preventDefault();
 
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -58,15 +52,8 @@ export default function CreateWikiPage() {
         formData.append("contents", contents);
 
         await submitWikiDetails(formData);
-
-        alert("The form was successfully submitted!");
-        setCategory("");
-        setTitle("");
-        setSlug("");
-        setContents("");
       } catch (error) {
         console.error("Submission failed:", error);
-        alert("The form failed to be submitted.");
       }
     }
   };
@@ -92,7 +79,7 @@ export default function CreateWikiPage() {
         </p>
       </div>
       <Separator />
-      <form action={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-8">
         <div className="space-y-2">
           <Label htmlFor="category">Category</Label>
           <Select
@@ -143,13 +130,11 @@ export default function CreateWikiPage() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="contents">Page Contents</Label>
-          <Input
+          <MDEditor
             id="contents"
             name="contents"
-            type="text"
-            placeholder="Page Contents"
             value={contents}
-            onChange={(e) => setContents(e.target.value)}
+            onChange={setContents}
           />
           {errors.contents && <p className="text-red-500">{errors.contents}</p>}
         </div>
