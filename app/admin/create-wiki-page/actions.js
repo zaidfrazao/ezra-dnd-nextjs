@@ -17,14 +17,8 @@ export async function submitWikiDetails(formData) {
       contents: formData.get("contents"),
     };
 
-    const pageId = await addWikiPage(
-      getFirestore(firebaseServerApp),
-      wikiPageInfo
-    );
-
-    console.log("New page created with ID:", pageId);
-
-    redirect("/");
+    await addWikiPage(getFirestore(firebaseServerApp), wikiPageInfo);
+    redirect(`/wiki${formData.get("slug")}`);
   } catch (error) {
     throw error;
   }
