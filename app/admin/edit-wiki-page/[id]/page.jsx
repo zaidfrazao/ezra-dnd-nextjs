@@ -1,7 +1,7 @@
 "use client";
 
 import MDEditor from "@uiw/react-md-editor";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,15 +16,32 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { submitWikiDetails } from "./actions";
+import { submitWikiDetails, fetchWikiDetails } from "./actions";
 
-export default function CreateWikiPage() {
-  const [isLoading, setIsLoading] = useState(false);
+export default function EditWikiPage({ params }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [contents, setContents] = useState("");
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    async function fetchStartingData() {
+      setIsLoading(true);
+
+      const id = (await params).id;
+      const startingData = await fetchWikiDetails(id);
+
+      setCategory(startingData.category);
+      setTitle(startingData.title);
+      setSlug(startingData.slug);
+      setContents(startingData.contents);
+
+      setIsLoading(false);
+    }
+    fetchStartingData();
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
@@ -50,6 +67,7 @@ export default function CreateWikiPage() {
       try {
         setIsLoading(true);
 
+        const id = (await params).id;
         const formData = new FormData();
 
         formData.append("category", category);
@@ -57,7 +75,7 @@ export default function CreateWikiPage() {
         formData.append("slug", slug);
         formData.append("contents", contents);
 
-        await submitWikiDetails(formData);
+        await submitWikiDetails(formData, id);
 
         setIsLoading(false);
       } catch (error) {
@@ -82,11 +100,9 @@ export default function CreateWikiPage() {
     return (
       <div className="hidden space-y-6 p-10 pb-16 md:block flex-1 lg:max-w-2xl">
         <div className="space-y-0.5">
-          <h2 className="text-2xl font-bold tracking-tight">
-            Create Wiki Page
-          </h2>
+          <h2 className="text-2xl font-bold tracking-tight">Edit Wiki Page</h2>
           <p className="text-muted-foreground">
-            Enter the details related to the page you'd like to add.
+            Enter the details related to the page you'd like to edit.
           </p>
         </div>
         <Separator />
@@ -119,9 +135,9 @@ export default function CreateWikiPage() {
   return (
     <div className="hidden space-y-6 p-10 pb-16 md:block flex-1 lg:max-w-2xl">
       <div className="space-y-0.5">
-        <h2 className="text-2xl font-bold tracking-tight">Create Wiki Page</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Edit Wiki Page</h2>
         <p className="text-muted-foreground">
-          Enter the details related to the page you'd like to add.
+          Enter the details related to the page you'd like to edit.
         </p>
       </div>
       <Separator />
@@ -184,7 +200,7 @@ export default function CreateWikiPage() {
           />
           {errors.contents && <p className="text-red-500">{errors.contents}</p>}
         </div>
-        <Button type="submit">Add new page</Button>
+        <Button type="submit">Save changes</Button>
       </form>
     </div>
   );
