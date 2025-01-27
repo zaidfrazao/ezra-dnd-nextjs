@@ -1,4 +1,13 @@
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  query,
+  where,
+} from "firebase/firestore";
 
 import { db } from "@/app/_lib/firebase/clientApp";
 
@@ -21,4 +30,21 @@ export async function getWikiPageData(database = db, id) {
   } else {
     throw Error;
   }
+}
+
+export async function getWikiPageBySlug(database = db, slug) {
+  const wikiPagesRef = collection(database, "wikiPages");
+  const q = query(wikiPagesRef, where("slug", "==", slug));
+
+  const querySnapshot = await getDocs(q);
+
+  let pageData = null;
+  querySnapshot.forEach((doc) => {
+    pageData = {
+      ...doc.data(),
+      id: doc.id,
+    };
+  });
+
+  return pageData;
 }

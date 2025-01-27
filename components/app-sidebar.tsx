@@ -18,6 +18,10 @@ import {
 const data = {
   navMain: [
     {
+      title: "Add new page",
+      url: "/admin/create-wiki-page",
+    },
+    {
       title: "Characters",
       url: "#",
       items: [
@@ -71,7 +75,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="#">
+            <Link href="/">
               <div className="flex items-center justify-center">
                 <Image
                   src="/Logo.jpg"
