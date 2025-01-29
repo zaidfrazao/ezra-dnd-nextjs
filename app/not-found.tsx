@@ -2,44 +2,16 @@ import Link from "next/link";
 
 export default function Custom404() {
   return (
-    <div style={containerStyle}>
-      <h1 style={titleStyle}>404 - Page Not Found</h1>
-      <p style={messageStyle}>The page you are looking for does not exist.</p>
+    <div className="flex flex-col items-center justify-center h-screen text-center bg-white text-gray-700">
+      <h1 className="flex text-4xl font-bold mb-4">404 - Page Not Found</h1>
+      <p className="text-lg mb-8">
+        The page you are looking for does not exist.
+      </p>
       <Link href="/dashboard" passHref>
-        <button style={buttonStyle}>Go Back to Home</button>
+        <button className="px-5 py-2.5 text-base bg-gray-400 text-white border-0 rounded-md cursor-pointer">
+          Go Back to Home
+        </button>
       </Link>
     </div>
   );
 }
-
-const containerStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  height: "100vh",
-  textAlign: "center",
-  backgroundColor: "white",
-  color: "#212529",
-};
-
-const titleStyle: React.CSSProperties = {
-  fontSize: "2.5rem",
-  fontWeight: "bold",
-  marginBottom: "1rem",
-};
-
-const messageStyle: React.CSSProperties = {
-  fontSize: "1.2rem",
-  marginBottom: "2rem",
-};
-
-const buttonStyle: React.CSSProperties = {
-  padding: "10px 20px",
-  fontSize: "1rem",
-  backgroundColor: "grey",
-  color: "#fff",
-  border: "none",
-  borderRadius: "5px",
-  cursor: "pointer",
-};
