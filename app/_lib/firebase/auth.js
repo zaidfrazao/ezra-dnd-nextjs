@@ -11,7 +11,6 @@ export function onAuthStateChanged(cb) {
 
 export async function signInWithEmail(email, password) {
   try {
-    console.log(email, password);
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.error(error.code);
@@ -21,8 +20,9 @@ export async function signInWithEmail(email, password) {
 }
 
 export async function signOut() {
+  console.log("Signing out.");
   try {
-    return auth.signOut();
+    await auth.signOut();
   } catch (error) {
     console.error("Error signing out with Google", error);
   }
