@@ -1,9 +1,10 @@
 "use client";
 
 import MDEditor from "@uiw/react-md-editor";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,14 +18,29 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { submitWikiDetails } from "./actions";
+import { onAuthStateChanged } from "@/app/_lib/firebase/auth";
 
 export default function CreateWikiPage() {
+  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [contents, setContents] = useState("");
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged((user) => {
+      if (!user) {
+        router.push("/login");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};

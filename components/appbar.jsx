@@ -12,8 +12,6 @@ import { signOut, onAuthStateChanged } from "@/app/_lib/firebase/auth";
 export function AppBar() {
   const [user, setUser] = useState(null);
 
-  console.log(user);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged((user) => {
       setUser(user);
@@ -38,7 +36,11 @@ export function AppBar() {
           </Button>
 
           <Avatar>
-            <AvatarImage src={user.photoURL ? user.photoURL : "https://github.com/shadcn.png"} />
+            <AvatarImage
+              src={
+                user.photoURL ? user.photoURL : "https://github.com/shadcn.png"
+              }
+            />
             <AvatarFallback>Morty</AvatarFallback>
           </Avatar>
         </div>

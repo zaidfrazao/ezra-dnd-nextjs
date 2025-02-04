@@ -3,6 +3,7 @@
 import MDEditor from "@uiw/react-md-editor";
 import React, { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,8 +18,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { submitWikiDetails, fetchWikiDetails } from "./actions";
+import { onAuthStateChanged } from "@/app/_lib/firebase/auth";
 
 export default function EditWikiPage({ params }) {
+  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
@@ -41,6 +45,18 @@ export default function EditWikiPage({ params }) {
       setIsLoading(false);
     }
     fetchStartingData();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged((user) => {
+      if (!user) {
+        router.push("/login");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const validateForm = () => {
