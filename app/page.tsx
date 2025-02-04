@@ -30,26 +30,26 @@ export default function Home() {
           <h2 className="flex text-2xl font-bold mb-2">Races</h2>
           <ul>
             <li>
-              <li>
-                <Button asChild variant="link" className="p-2">
-                  <Link href="/human">Dark Elves</Link>
-                </Button>
-              </li>
-              <li>
-                <Button asChild variant="link" className="p-2">
-                  <Link href="/human">Dragons</Link>
-                </Button>
-              </li>
-              <li>
-                <Button asChild variant="link" className="p-2">
-                  <Link href="/human">Dwarves</Link>
-                </Button>
-              </li>
-              <li>
-                <Button asChild variant="link" className="p-2">
-                  <Link href="/human">Elves</Link>
-                </Button>
-              </li>
+              <Button asChild variant="link" className="p-2">
+                <Link href="/human">Dark Elves</Link>
+              </Button>
+            </li>
+            <li>
+              <Button asChild variant="link" className="p-2">
+                <Link href="/human">Dragons</Link>
+              </Button>
+            </li>
+            <li>
+              <Button asChild variant="link" className="p-2">
+                <Link href="/human">Dwarves</Link>
+              </Button>
+            </li>
+            <li>
+              <Button asChild variant="link" className="p-2">
+                <Link href="/human">Elves</Link>
+              </Button>
+            </li>
+            <li>
               <Button asChild variant="link" className="p-2">
                 <Link href="/human">Humans</Link>
               </Button>
