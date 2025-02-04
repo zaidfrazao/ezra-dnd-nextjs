@@ -1,8 +1,10 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Header({ title, id }) {
+  const router = useRouter();
+
   return (
     <div>
       <div className="md:flex md:items-center md:justify-between">
@@ -15,7 +17,7 @@ export default function Header({ title, id }) {
           <button
             type="button"
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            onClick={() => redirect(`/admin/edit-wiki-page/${id}`)}
+            onClick={() => router.push(`/admin/edit-wiki-page/${id}`)}
           >
             Edit
           </button>
