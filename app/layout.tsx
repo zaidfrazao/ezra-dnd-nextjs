@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Link from "next/link";
-import Image from "next/image";
+
 import { AppBar } from "@/components/appbar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { Footer } from "@/components/footer";
+
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,40 +38,7 @@ export default async function RootLayout({
           <SidebarInset>
             <AppBar />
             <main className="flex flex-1 flex-col gap-4 p-4">{children}</main>
-            <footer
-              id="footer"
-              className="flex mw-footer justify-between"
-              role="contentinfo"
-            >
-              <ul id="footer-info">
-                <li>
-                  <p>
-                    This is a wiki page for{" "}
-                    <b className="text-red-800">The Saga of Vizima</b> dungeons
-                    and dragons campain
-                  </p>
-                </li>
-                <li>
-                  Created and maintained by Trent Mokoena for more info{" "}
-                  <b>
-                    <Link href="https://github.com/suburban-loner">
-                      click here
-                    </Link>
-                  </b>
-                </li>
-              </ul>
-              <Link href="#">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/Footer-Logo.jpg"
-                    alt="Footer logo for the dnd campaign."
-                    width={100}
-                    height={100}
-                    className="rounded-full justify-end"
-                  />
-                </div>
-              </Link>
-            </footer>
+            <Footer />
           </SidebarInset>
         </SidebarProvider>
       </body>
