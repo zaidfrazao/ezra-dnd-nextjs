@@ -1,6 +1,5 @@
 import {
-  GoogleAuthProvider,
-  signInWithPopup,
+  signInWithEmailAndPassword,
   onAuthStateChanged as _onAuthStateChanged,
 } from "firebase/auth";
 
@@ -10,19 +9,20 @@ export function onAuthStateChanged(cb) {
   return _onAuthStateChanged(auth, cb);
 }
 
-export async function signInWithGoogle() {
-  const provider = new GoogleAuthProvider();
-
+export async function signInWithEmail(email, password) {
   try {
-    await signInWithPopup(auth, provider);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    console.error("Error signing in with Google", error);
+    console.error(error.code);
+    console.error(error.message);
+    throw error;
   }
 }
 
 export async function signOut() {
+  console.log("Signing out.");
   try {
-    return auth.signOut();
+    await auth.signOut();
   } catch (error) {
     console.error("Error signing out with Google", error);
   }
