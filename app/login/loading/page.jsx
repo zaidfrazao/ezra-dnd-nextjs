@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 
-export default function LoadingPage() {
+export default async function LoadingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,16 @@ export default function LoadingPage() {
   if (object.keys(validateForm).length > 0) {
     setErrors(validateForm);
   } else { setErrors({});
-    setIsLoading(true);}
+    setIsLoading(true);
+    try {
+      await signIn(email, password);
+      redirect("/");
+
+      setIsLoading(false);
+    } catch (error) {
+      throw error;
+    }
+  }
 
   if (isLoading) {
     return (
