@@ -33,7 +33,7 @@ export default function CreateWikiPage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged((user) => {
       if (!user) {
-        router.push("/login");
+        router.replace("/login");
       }
     });
 
