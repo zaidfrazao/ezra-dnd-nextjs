@@ -83,7 +83,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <div className="bg-[linear-gradient(to_bottom,rgba(24,24,24,0),rgba(24,24,24,1)),url('/Logo.jpg')] bg-cover aspect-video text-white pb-24"></div>
         </Link>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="pt-4">
         <SidebarGroup>
           <SidebarMenu>
             {data.navMain.map((item) => (
