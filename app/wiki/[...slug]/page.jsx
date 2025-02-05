@@ -40,7 +40,7 @@ const components = {
   table: (props) => {
     return (
       <div className="my-6 w-full overflow-y-auto">
-        <table className="w-full">
+        <table>
           <thead>
             <tr className="m-0 border-t p-0 even:bg-muted">
               {props.children[0].props.children.props.children.map(

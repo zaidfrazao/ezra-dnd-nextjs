@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "../components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export default function Example() {
+export default function HomePage() {
   return (
     <div>
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
