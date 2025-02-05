@@ -22,12 +22,12 @@ const data = {
       url: "/admin/create-wiki-page",
     },
     {
-      title: "Characters",
-      url: "#",
+      title: "Races",
+      url: "/races",
       items: [
         {
           title: "Dark Elves",
-          url: "#",
+          url: "/races/dark-elves",
         },
         {
           title: "Dragons",
