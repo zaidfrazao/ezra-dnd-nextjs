@@ -77,22 +77,10 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <Link href="/">
-              <div className="flex items-center justify-center">
-                <Image
-                  src="/Logo.jpg"
-                  alt="Logo for the dnd campaign."
-                  width={100}
-                  height={100}
-                  className="rounded-lg"
-                />
-              </div>
-            </Link>
-          </SidebarMenuItem>
-        </SidebarMenu>
+      <SidebarHeader className="p-0">
+        <Link href="/">
+          <div className="bg-[linear-gradient(to_bottom,rgba(24,24,24,0),rgba(24,24,24,1)),url('/Logo.jpg')] bg-cover aspect-video text-white pb-24"></div>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
