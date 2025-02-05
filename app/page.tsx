@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Example() {
   return (
-    <div className="bg-gray-50 py-24 sm:py-32">
+    <div className="bg-gray-50 py-12 sm:py-16">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-center text-base/7 font-semibold text-indigo-600">
           DnD campaign manager
@@ -134,7 +134,9 @@ export default function Example() {
                           <AvatarFallback>alfar-saltus</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/continents/alfar-saltus">Alfar Saltus</Link>
+                          <Link href="/wiki/continents/alfar-saltus">
+                            Alfar Saltus
+                          </Link>
                         </Button>
                       </div>
                     </li>
@@ -145,7 +147,9 @@ export default function Example() {
                           <AvatarFallback>oloklerious</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/continents/oloklerious">Oloklerious</Link>
+                          <Link href="/wiki/continents/oloklerious">
+                            Oloklerious
+                          </Link>
                         </Button>
                       </div>
                     </li>
