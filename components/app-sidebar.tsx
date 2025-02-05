@@ -18,51 +18,56 @@ import {
 const data = {
   navMain: [
     {
-      title: "Add new page",
-      url: "/admin/create-wiki-page",
+      title: "Admin Tools",
+      url: "/tools",
+      items: [
+        {
+          title: "Add new page",
+          url: "/admin/create-wiki-page",
+        },
+      ],
     },
     {
       title: "Races",
-      url: "/races",
+      url: "/wiki/characters",
       items: [
         {
           title: "Dark Elves",
-          url: "/races/dark-elves",
+          url: "/wiki/characters/dark-elves",
         },
         {
           title: "Dragons",
-          url: "#",
-          isActive: true,
+          url: "/wiki/characters/dragons",
         },
         {
           title: "Dwarves",
-          url: "#",
+          url: "/wiki/characters/dwarves",
         },
         {
           title: "Elves",
-          url: "#",
+          url: "/wiki/characters/elves",
         },
         {
           title: "Humans",
-          url: "#",
+          url: "/wiki/characters/humans",
         },
         {
           title: "Orcs",
-          url: "#",
+          url: "/wiki/characters/orcs",
         },
       ],
     },
     {
       title: "Continents",
-      url: "#",
+      url: "/wiki/continents",
       items: [
         {
           title: "Oloklerious",
-          url: "#",
+          url: "/wiki/continents/oloklerious",
         },
         {
           title: "Alfar Saltus",
-          url: "#",
+          url: "/wiki/continents/alfar-saltus",
         },
       ],
     },
@@ -103,7 +108,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenuSub>
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
+                        <SidebarMenuSubButton asChild>
                           <a href={item.url}>{item.title}</a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
