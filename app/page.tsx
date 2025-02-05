@@ -21,7 +21,7 @@ export default function Example() {
                 <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                   Races
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <div className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                   <ul>
                     <li>
                       <div className="flex items-center p-4">
@@ -30,9 +30,7 @@ export default function Example() {
                           <AvatarFallback>dark-elves</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/dark-elves">
-                            Dark Elves
-                          </Link>
+                          <Link href="/wiki/races/dark-elves">Dark Elves</Link>
                         </Button>
                       </div>
                     </li>
@@ -43,7 +41,7 @@ export default function Example() {
                           <AvatarFallback>dragons</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/dragons">Dragons</Link>
+                          <Link href="/wiki/races/dragons">Dragons</Link>
                         </Button>
                       </div>
                     </li>
@@ -54,7 +52,7 @@ export default function Example() {
                           <AvatarFallback>dwarves</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/dwarves">Dwarves</Link>
+                          <Link href="/wiki/races/dwarves">Dwarves</Link>
                         </Button>
                       </div>
                     </li>
@@ -65,7 +63,7 @@ export default function Example() {
                           <AvatarFallback>elves</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/elves">Elves</Link>
+                          <Link href="/wiki/races/elves">Elves</Link>
                         </Button>
                       </div>
                     </li>
@@ -76,7 +74,7 @@ export default function Example() {
                           <AvatarFallback>humans</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/humans">Humans</Link>
+                          <Link href="/wiki/races/humans">Humans</Link>
                         </Button>
                       </div>
                     </li>
@@ -87,12 +85,12 @@ export default function Example() {
                           <AvatarFallback>orcs</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/orcs">Orcs</Link>
+                          <Link href="/wiki/races/orcs">Orcs</Link>
                         </Button>
                       </div>
                     </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
@@ -125,7 +123,7 @@ export default function Example() {
                 <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                   Continents
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <div className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                   <ul>
                     <li>
                       <div className="flex items-center p-4">
@@ -154,7 +152,7 @@ export default function Example() {
                       </div>
                     </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
@@ -166,7 +164,7 @@ export default function Example() {
                 <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                   Classes
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <div className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                   <ul>
                     <li>
                       <div className="flex items-center p-4">
@@ -175,7 +173,7 @@ export default function Example() {
                           <AvatarFallback>artificer</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/">Artificer</Link>
+                          <Link href="/wiki/classes/artificer">Artificer</Link>
                         </Button>
                       </div>
                     </li>
@@ -186,7 +184,7 @@ export default function Example() {
                           <AvatarFallback>barbarian</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/">Barbarian</Link>
+                          <Link href="/wiki/classes/barbarian">Barbarian</Link>
                         </Button>
                       </div>
                     </li>
@@ -197,7 +195,7 @@ export default function Example() {
                           <AvatarFallback>bard</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/">Bard</Link>
+                          <Link href="/wiki/classes/bard">Bard</Link>
                         </Button>
                       </div>
                     </li>
@@ -208,7 +206,7 @@ export default function Example() {
                           <AvatarFallback>paladin</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/">Paladin</Link>
+                          <Link href="/wiki/classes/paladin">Paladin</Link>
                         </Button>
                       </div>
                     </li>
@@ -219,7 +217,7 @@ export default function Example() {
                           <AvatarFallback>rogue</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/">Rogue</Link>
+                          <Link href="/wiki/classes/rogue">Rogue</Link>
                         </Button>
                       </div>
                     </li>
@@ -230,12 +228,12 @@ export default function Example() {
                           <AvatarFallback>wizard</AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
-                          <Link href="/wiki/characters/">Wizard</Link>
+                          <Link href="/wiki/classes/wizard">Wizard</Link>
                         </Button>
                       </div>
                     </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>

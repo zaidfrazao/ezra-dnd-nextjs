@@ -33,41 +33,42 @@ const data = {
       items: [
         {
           title: "Dark Elves",
-          url: "/wiki/characters/dark-elves",
+          url: "/wiki/races/dark-elves",
         },
         {
           title: "Dragons",
-          url: "/wiki/characters/dragons",
+          url: "/wiki/races/dragons",
+          isActive: true,
         },
         {
           title: "Dwarves",
-          url: "/wiki/characters/dwarves",
+          url: "/wiki/races/dwarves",
         },
         {
           title: "Elves",
-          url: "/wiki/characters/elves",
+          url: "/wiki/races/elves",
         },
         {
           title: "Humans",
-          url: "/wiki/characters/humans",
+          url: "/wiki/races/humans",
         },
         {
           title: "Orcs",
-          url: "/wiki/characters/orcs",
+          url: "/wiki/races/orcs",
         },
       ],
     },
     {
       title: "Continents",
-      url: "/wiki/continents",
+      url: "/continents/",
       items: [
-        {
-          title: "Oloklerious",
-          url: "/wiki/continents/oloklerious",
-        },
         {
           title: "Alfar Saltus",
           url: "/wiki/continents/alfar-saltus",
+        },
+        {
+          title: "Oloklerious",
+          url: "/wiki/continents/oloklerious",
         },
       ],
     },

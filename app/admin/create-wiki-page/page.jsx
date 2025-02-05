@@ -157,8 +157,9 @@ export default function CreateWikiPage() {
               <SelectValue placeholder="Select a category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="characters">Characters</SelectItem>
+              <SelectItem value="races">Races</SelectItem>
               <SelectItem value="continents">Continents</SelectItem>
+              <SelectItem value="classes">Classes</SelectItem>
             </SelectContent>
           </Select>
           {errors.category && <p className="text-red-500">{errors.category}</p>}
