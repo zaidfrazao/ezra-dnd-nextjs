@@ -27,42 +27,42 @@ const data = {
       items: [
         {
           title: "Dark Elves",
-          url: "/races/dark-elves",
+          url: "/wiki/races/dark-elves",
         },
         {
           title: "Dragons",
-          url: "#",
+          url: "/wiki/races/dragons",
           isActive: true,
         },
         {
           title: "Dwarves",
-          url: "#",
+          url: "/wiki/races/dwarves",
         },
         {
           title: "Elves",
-          url: "#",
+          url: "/wiki/races/elves",
         },
         {
           title: "Humans",
-          url: "#",
+          url: "/wiki/races/humans",
         },
         {
           title: "Orcs",
-          url: "#",
+          url: "/wiki/races/orcs",
         },
       ],
     },
     {
       title: "Continents",
-      url: "#",
+      url: "/continents/",
       items: [
         {
-          title: "Oloklerious",
-          url: "#",
+          title: "Alfar Saltus",
+          url: "/wiki/continents/alfar-saltus",
         },
         {
-          title: "Alfar Saltus",
-          url: "#",
+          title: "Oloklerious",
+          url: "/wiki/continents/oloklerious",
         },
       ],
     },
