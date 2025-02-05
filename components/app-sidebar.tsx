@@ -18,12 +18,18 @@ import {
 const data = {
   navMain: [
     {
-      title: "Add new page",
-      url: "/admin/create-wiki-page",
+      title: "Admin Tools",
+      url: "/tools",
+      items: [
+        {
+          title: "Add new page",
+          url: "/admin/create-wiki-page",
+        },
+      ],
     },
     {
       title: "Races",
-      url: "/races",
+      url: "/wiki/characters",
       items: [
         {
           title: "Dark Elves",
@@ -103,7 +109,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenuSub>
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
+                        <SidebarMenuSubButton asChild>
                           <a href={item.url}>{item.title}</a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
