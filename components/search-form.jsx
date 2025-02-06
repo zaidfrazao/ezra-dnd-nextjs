@@ -1,6 +1,11 @@
+"use client";
+
 import { Search } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/app/_lib/firebase/clientApp";
 import { Label } from "@/components/ui/label";
 import {
   SidebarGroup,
@@ -8,15 +13,36 @@ import {
   SidebarInput,
 } from "@/components/ui/sidebar";
 
-export function SearchForm({ ...props }) {
+export function SearchForm({ onSearch, ...props }) {
   const [search, setSearch] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (onSearch) {
-      onSearch(search);
-    } else {
-      console.log("Search value:", search);
+
+    const cleanedSearch = search
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9 ]/g, "");
+
+    try {
+      const wikiRef = collection(db, "wikiPages");
+      const q = query(wikiRef, where("searchableTitle", "==", cleanedSearch));
+      const querySnapshot = await getDocs(q);
+      let searchResults = [];
+
+      querySnapshot.forEach((doc) => {
+        searchResults.push(doc.data());
+      });
+
+      if (searchResults.length > 0) {
+        router.push(`/wiki${searchResults[0].slug}`);
+      } else {
+        router.push(`/wiki/search?q=${search}`);
+      }
+      setSearch("");
+    } catch (error) {
+      console.error("Error searching Firestore:", error);
     }
   };
 

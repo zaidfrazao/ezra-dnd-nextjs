@@ -13,6 +13,7 @@ export async function submitWikiDetails(formData) {
     const wikiPageInfo = {
       category: formData.get("category"),
       title: formData.get("title"),
+      searchableTitle: formData.get("searchableTitle"),
       slug: formData.get("slug"),
       contents: formData.get("contents"),
     };

@@ -26,6 +26,7 @@ export default function EditWikiPage({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
+  const [searchableTitle, setSearchableTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [contents, setContents] = useState("");
   const [errors, setErrors] = useState({});
@@ -39,6 +40,7 @@ export default function EditWikiPage({ params }) {
 
       setCategory(startingData.category);
       setTitle(startingData.title);
+      setSearchableTitle(startingData.searchableTitle);
       setSlug(startingData.slug);
       setContents(startingData.contents);
 
@@ -88,6 +90,7 @@ export default function EditWikiPage({ params }) {
 
         formData.append("category", category);
         formData.append("title", title);
+        formData.append("searchableTitle", searchableTitle);
         formData.append("slug", slug);
         formData.append("contents", contents);
 
@@ -98,6 +101,14 @@ export default function EditWikiPage({ params }) {
         console.error("Submission failed:", error);
       }
     }
+  };
+
+  const formatSearchableTitle = (title) => {
+    const formattedTitle = title
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9 ]/g, "");
+    setSearchableTitle(formattedTitle);
   };
 
   const formatSlug = (category, title) => {
@@ -190,6 +201,7 @@ export default function EditWikiPage({ params }) {
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
+              formatSearchableTitle(e.target.value);
               formatSlug(category, e.target.value);
             }}
           />
