@@ -25,7 +25,7 @@ import {
 export function AppSidebar({ ...props }) {
   const [user, setUser] = useState(null);
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   console.log("results", results);
 
@@ -34,7 +34,6 @@ export function AppSidebar({ ...props }) {
       const categories = ["races", "classes", "continents"];
 
       try {
-        setIsLoading(true);
         const wikiRef = collection(db, "wikiPages");
         const q = query(
           wikiRef,
@@ -118,30 +117,30 @@ export function AppSidebar({ ...props }) {
         <SidebarContent className="pt-4">
           <SidebarGroup>
             <SidebarMenu>
-              {data.navMain.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className="font-medium">
-                      {item.title}
-                    </a>
-                  </SidebarMenuButton>
-                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
-                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
-                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
-                </SidebarMenuItem>
-              ))}
-              {results.map((category) => (
-                <SidebarMenuItem key={category.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={category.url} className="font-medium">
-                      {category.title}
-                    </a>
-                  </SidebarMenuButton>
-                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
-                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
-                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
-                </SidebarMenuItem>
-              ))}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Skeleton className="h-5 w-24 rounded-md bg-gray-700 my-2" />
+                </SidebarMenuButton>
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Skeleton className="h-5 w-24 rounded-md bg-gray-700 my-2" />
+                </SidebarMenuButton>
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Skeleton className="h-5 w-24 rounded-md bg-gray-700 my-2" />
+                </SidebarMenuButton>
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+                <Skeleton className="h-5 w-40 rounded-md bg-gray-700 my-2 ml-4" />
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroup>
         </SidebarContent>
