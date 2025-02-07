@@ -107,7 +107,7 @@ export default function EditWikiPage({ params }) {
     const formattedTitle = title
       .trim()
       .toLowerCase()
-      .replace(/[^a-zA-Z0-9-_]/g, "");
+      .replace(/[^a-zA-Z0-9 ]/g, "");
     setSearchableTitle(formattedTitle);
   };
 
