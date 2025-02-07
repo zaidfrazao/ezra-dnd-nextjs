@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { InstantSearch, Configure } from "react-instantsearch";
 
@@ -13,15 +13,15 @@ const searchClient = algoliasearch(
 );
 
 export default function SearchPage() {
-  const searchParams = useSearchParams();
-
   return (
     <div>
-      <InstantSearch searchClient={searchClient} indexName="wikiPages">
-        <Configure hitsPerPage={5} />
-        <SearchBox initialValue={searchParams.get("query")} />
-        <Results />
-      </InstantSearch>
+      <Suspense>
+        <InstantSearch searchClient={searchClient} indexName="wikiPages">
+          <Configure hitsPerPage={5} />
+          <SearchBox />
+          <Results />
+        </InstantSearch>
+      </Suspense>
     </div>
   );
 }
