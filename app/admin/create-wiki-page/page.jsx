@@ -26,6 +26,7 @@ export default function CreateWikiPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
+  const [searchableTitle, setSearchableTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [contents, setContents] = useState("");
   const [errors, setErrors] = useState({});
@@ -70,6 +71,7 @@ export default function CreateWikiPage() {
 
         formData.append("category", category);
         formData.append("title", title);
+        formData.append("searchableTitle", searchableTitle);
         formData.append("slug", slug);
         formData.append("contents", contents);
 
@@ -80,6 +82,14 @@ export default function CreateWikiPage() {
         console.error("Submission failed:", error);
       }
     }
+  };
+
+  const formatSearchableTitle = (title) => {
+    const formattedTitle = title
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9 ]/g, "");
+    setSearchableTitle(formattedTitle);
   };
 
   const formatSlug = (category, title) => {
@@ -174,6 +184,7 @@ export default function CreateWikiPage() {
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
+              formatSearchableTitle(e.target.value);
               formatSlug(category, e.target.value);
             }}
           />
