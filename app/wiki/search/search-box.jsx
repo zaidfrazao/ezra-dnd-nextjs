@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { useSearchBox } from "react-instantsearch";
 
 export function SearchBox(props) {
-  const { initialValue } = props;
   const { query, refine } = useSearchBox(props);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    const initialValue = searchParams.get("query");
     if (initialValue) {
       refine(initialValue);
     }

@@ -38,7 +38,7 @@ export function SearchForm({ onSearch, ...props }) {
       if (searchResults.length > 0) {
         router.push(`/wiki${searchResults[0].slug}`);
       } else {
-        router.push(`/wiki/search?q=${search}`);
+        router.push(`/wiki/search?query=${search}`);
       }
       setSearch("");
     } catch (error) {
