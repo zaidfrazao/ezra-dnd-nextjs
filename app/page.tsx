@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "../components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-
 export default function HomePage() {
   return (
     <div>
@@ -28,7 +27,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/dark-elves.jpg"} />
-                          <AvatarFallback>dark-elves</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/races/dark-elves">Dark Elves</Link>
@@ -39,7 +38,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/dragons.jpg"} />
-                          <AvatarFallback>dragons</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/races/dragons">Dragons</Link>
@@ -50,7 +49,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/dwarves.jpg"} />
-                          <AvatarFallback>dwarves</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/races/dwarves">Dwarves</Link>
@@ -61,7 +60,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/elves.jpg"} />
-                          <AvatarFallback>elves</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/races/elves">Elves</Link>
@@ -72,7 +71,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/humans.jpg"} />
-                          <AvatarFallback>humans</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/races/humans">Humans</Link>
@@ -83,7 +82,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/orcs.jpg"} />
-                          <AvatarFallback>orcs</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/races/orcs">Orcs</Link>
@@ -130,7 +129,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/alfar-saltus.jpg"} />
-                          <AvatarFallback>alfar-saltus</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/continents/alfar-saltus">
@@ -143,7 +142,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/oloklerious.jpg"} />
-                          <AvatarFallback>oloklerious</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/continents/oloklerious">
@@ -171,7 +170,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/artificer.jpg"} />
-                          <AvatarFallback>artificer</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/classes/artificer">Artificer</Link>
@@ -181,8 +180,8 @@ export default function HomePage() {
                     <li>
                       <div className="flex items-center p-4">
                         <Avatar>
-                          <AvatarImage src={"/barbarian.png"} />
-                          <AvatarFallback>barbarian</AvatarFallback>
+                          <AvatarImage src={"/barbarian.jpg"} />
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/classes/barbarian">Barbarian</Link>
@@ -192,8 +191,8 @@ export default function HomePage() {
                     <li>
                       <div className="flex items-center p-4">
                         <Avatar>
-                          <AvatarImage src={"/bard.png"} />
-                          <AvatarFallback>bard</AvatarFallback>
+                          <AvatarImage src={"/bard.jpg"} />
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/classes/bard">Bard</Link>
@@ -204,7 +203,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/paladin.jpg"} />
-                          <AvatarFallback>paladin</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/classes/paladin">Paladin</Link>
@@ -215,7 +214,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/rogue.jpg"} />
-                          <AvatarFallback>rogue</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/classes/rogue">Rogue</Link>
@@ -226,7 +225,7 @@ export default function HomePage() {
                       <div className="flex items-center p-4">
                         <Avatar>
                           <AvatarImage src={"/wizard.jpg"} />
-                          <AvatarFallback>wizard</AvatarFallback>
+                          <AvatarFallback></AvatarFallback>
                         </Avatar>
                         <Button asChild variant="link" className="p-2">
                           <Link href="/wiki/classes/wizard">Wizard</Link>
