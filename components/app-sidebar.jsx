@@ -4,7 +4,10 @@ import * as React from "react";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
+import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { db } from "@/app/_lib/firebase/clientApp";
 import { onAuthStateChanged } from "@/app/_lib/firebase/auth";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Sidebar,
   SidebarContent,
@@ -21,6 +24,61 @@ import {
 
 export function AppSidebar({ ...props }) {
   const [user, setUser] = useState(null);
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  console.log("results", results);
+
+  useEffect(() => {
+    async function fetchPageData() {
+      const categories = ["races", "classes", "continents"];
+
+      try {
+        setIsLoading(true);
+        const wikiRef = collection(db, "wikiPages");
+        const q = query(
+          wikiRef,
+          where("category", "in", categories),
+          orderBy("category", "desc"),
+          orderBy("title", "asc")
+        );
+        const querySnapshot = await getDocs(q);
+
+        const groupedData = {};
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          console.log("data", data);
+          if (!groupedData[data.category]) {
+            groupedData[data.category] = {
+              title:
+                data.category.charAt(0).toUpperCase() + data.category.slice(1),
+              url: `/wiki/${data.category}`,
+              items: [],
+            };
+          }
+          groupedData[data.category].items.push({
+            title: data.title,
+            url: `/wiki/${
+              data.slug ||
+              data.title.toLowerCase().replace(/[^a-zA-Z0-9-_]/g, "")
+            }`,
+          });
+        });
+
+        // const data = querySnapshot.docs.map((doc) => ({
+        //   id: doc.id,
+        //   ...doc.data(),
+        // }));
+
+        setResults(Object.values(groupedData));
+        setIsLoading(false);
+      } catch (error) {
+        console.log("Error getting documents: ", error);
+      }
+    }
+
+    fetchPageData();
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged((user) => {
@@ -46,28 +104,51 @@ export function AppSidebar({ ...props }) {
             ],
           }
         : null,
-      {
-        title: "Races",
-        url: "/wiki/characters",
-        items: [
-          { title: "Dark Elves", url: "/wiki/races/dark-elves" },
-          { title: "Dragons", url: "/wiki/races/dragons", isActive: true },
-          { title: "Dwarves", url: "/wiki/races/dwarves" },
-          { title: "Elves", url: "/wiki/races/elves" },
-          { title: "Humans", url: "/wiki/races/humans" },
-          { title: "Orcs", url: "/wiki/races/orcs" },
-        ],
-      },
-      {
-        title: "Continents",
-        url: "/continents/",
-        items: [
-          { title: "Alfar Saltus", url: "/wiki/continents/alfar-saltus" },
-          { title: "Oloklerious", url: "/wiki/continents/oloklerious" },
-        ],
-      },
     ].filter(Boolean),
   };
+
+  if (isLoading) {
+    return (
+      <Sidebar {...props}>
+        <SidebarHeader className="p-0">
+          <Link href="/">
+            <div className="bg-[linear-gradient(to_bottom,rgba(24,24,24,0),rgba(24,24,24,1)),url('/Logo.jpg')] bg-cover aspect-video text-white pb-24"></div>
+          </Link>
+        </SidebarHeader>
+        <SidebarContent className="pt-4">
+          <SidebarGroup>
+            <SidebarMenu>
+              {data.navMain.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url} className="font-medium">
+                      {item.title}
+                    </a>
+                  </SidebarMenuButton>
+                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
+                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
+                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
+                </SidebarMenuItem>
+              ))}
+              {results.map((category) => (
+                <SidebarMenuItem key={category.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={category.url} className="font-medium">
+                      {category.title}
+                    </a>
+                  </SidebarMenuButton>
+                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
+                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
+                  <Skeleton className="h-6 w-40 rounded-md bg-gray-700 my-2" />
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarRail />
+      </Sidebar>
+    );
+  }
 
   return (
     <Sidebar {...props}>
@@ -92,6 +173,26 @@ export function AppSidebar({ ...props }) {
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton asChild>
                           <a href={subItem.url}>{subItem.title}</a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))}
+                  </SidebarMenuSub>
+                ) : null}
+              </SidebarMenuItem>
+            ))}
+            {results.map((category) => (
+              <SidebarMenuItem key={category.title}>
+                <SidebarMenuButton asChild>
+                  <a href={category.url} className="font-medium">
+                    {category.title}
+                  </a>
+                </SidebarMenuButton>
+                {category.items?.length ? (
+                  <SidebarMenuSub>
+                    {category.items.map((item) => (
+                      <SidebarMenuSubItem key={item.title}>
+                        <SidebarMenuSubButton asChild>
+                          <a href={item.url}>{item.title}</a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
