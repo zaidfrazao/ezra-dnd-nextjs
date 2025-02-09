@@ -64,11 +64,6 @@ export function AppSidebar({ ...props }) {
           });
         });
 
-        // const data = querySnapshot.docs.map((doc) => ({
-        //   id: doc.id,
-        //   ...doc.data(),
-        // }));
-
         setResults(Object.values(groupedData));
         setIsLoading(false);
       } catch (error) {
