@@ -60,7 +60,7 @@ export function LoginForm({ signIn }) {
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl text-center">
-              Login to your account
+              Seek passage to your admin account
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -68,13 +68,13 @@ export function LoginForm({ signIn }) {
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
-                  <Skeleton className="h-8 w-max-80 rounded-md" />
+                  <Skeleton className="h-8 w-full rounded-md" />
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
                   </div>
-                  <Skeleton className="h-8 w-max-80 rounded-md" />
+                  <Skeleton className="h-8 w-full rounded-md" />
                 </div>
                 <a
                   href="#"
@@ -105,7 +105,7 @@ export function LoginForm({ signIn }) {
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl text-center">
-            Seek Passage to Your Adventurer's Account
+            Seek passage to your admin account
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -116,7 +116,7 @@ export function LoginForm({ signIn }) {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Leofwine@greyhawk.com"
+                  placeholder="leofwine@greyhawk.com"
                   required
                   onChange={(e) => setEmail(e.target.value)}
                 />

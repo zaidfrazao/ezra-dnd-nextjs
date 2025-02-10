@@ -32,27 +32,11 @@ export function AppBar() {
           <SidebarTrigger />
         </div>
         <div className="grow h-4" />
-        <SearchForm isLoading={isLoading} />
-        {user ? (
-          <div className="flex pr-4">
-            <Button variant="link" className="p-2">
-              <Skeleton className="h-5 w-24 rounded-md my-2" />
-            </Button>
-
-            <Avatar>
-              <AvatarImage src={"/avatar-loading.jpg"} />
-              <AvatarFallback></AvatarFallback>
-            </Avatar>
-          </div>
-        ) : (
-          <div className="flex pr-4">
-            <Button asChild variant="link" className="p-2">
-              <Link href="">
-                <Skeleton className="h-5 w-24 rounded-md my-2" />
-              </Link>
-            </Button>
-          </div>
-        )}
+        <div className="flex pr-4 gap-2 items-center">
+          <Skeleton className="h-6 w-40 rounded-md my-2" />
+          <Skeleton className="h-6 w-20 rounded-md my-2" />
+          <Skeleton className="h-10 w-10 rounded-full my-2" />
+        </div>
       </header>
     );
   }
@@ -63,13 +47,12 @@ export function AppBar() {
         <SidebarTrigger />
       </div>
       <div className="grow h-4" />
-      <SearchForm isLoading={isLoading} />
+      <SearchForm />
       {user ? (
         <div className="flex pr-4">
           <Button variant="link" onClick={signOut} className="p-2">
             Sign out
           </Button>
-
           <Avatar>
             <AvatarImage src={"/human-artificer.jpg"} />
             <AvatarFallback></AvatarFallback>

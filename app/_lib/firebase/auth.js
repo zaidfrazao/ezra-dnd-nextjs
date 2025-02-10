@@ -20,7 +20,6 @@ export async function signInWithEmail(email, password) {
 }
 
 export async function signOut() {
-  console.log("Signing out.");
   try {
     await auth.signOut();
   } catch (error) {
