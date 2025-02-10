@@ -125,7 +125,7 @@ export default function EditWikiPage({ params }) {
 
   if (isLoading) {
     return (
-      <div className="hidden space-y-6 p-10 pb-16 md:block flex-1 lg:max-w-2xl">
+      <div className="space-y-6 p-4 pb-16 md:p-10 md:block flex-1 lg:max-w-2xl">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Edit Wiki Page</h2>
           <p className="text-muted-foreground">
@@ -160,7 +160,7 @@ export default function EditWikiPage({ params }) {
   }
 
   return (
-    <div className="hidden space-y-6 p-10 pb-16 md:block flex-1 lg:max-w-2xl">
+    <div className="space-y-6 p-4 pb-16 md:p-10 md:block flex-1 lg:max-w-2xl">
       <div className="space-y-0.5">
         <h2 className="text-2xl font-bold tracking-tight">Edit Wiki Page</h2>
         <p className="text-muted-foreground">
