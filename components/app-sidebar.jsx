@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
-
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import Link from "next/link";
+
 import { db } from "@/app/_lib/firebase/clientApp";
 import { onAuthStateChanged } from "@/app/_lib/firebase/auth";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -28,7 +27,7 @@ export function AppSidebar({ ...props }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchPageData() {
+    const fetchPageData = async () => {
       const categories = ["races", "classes", "continents"];
 
       try {
@@ -67,7 +66,7 @@ export function AppSidebar({ ...props }) {
       } catch (error) {
         console.log("Error getting documents: ", error);
       }
-    }
+    };
 
     fetchPageData();
   }, []);
@@ -155,16 +154,16 @@ export function AppSidebar({ ...props }) {
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url} className="font-medium">
+                  <Link href={item.url} className="font-medium">
                     {item.title}
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
                 {item.items?.length ? (
                   <SidebarMenuSub>
                     {item.items.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton asChild>
-                          <a href={subItem.url}>{subItem.title}</a>
+                          <Link href={subItem.url}>{subItem.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -175,16 +174,16 @@ export function AppSidebar({ ...props }) {
             {results.map((category) => (
               <SidebarMenuItem key={category.title}>
                 <SidebarMenuButton asChild>
-                  <a href={category.url} className="font-medium">
+                  <Link href={category.url} className="font-medium">
                     {category.title}
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
                 {category.items?.length ? (
                   <SidebarMenuSub>
                     {category.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild>
-                          <a href={item.url}>{item.title}</a>
+                          <Link href={item.url}>{item.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
@@ -9,6 +10,12 @@ import Header from "./header";
 import { fetchWikiDetails } from "./actions";
 
 const components = {
+  a: (props) => (
+    <Link
+      className="text-blue-500 hover:underline-offset-4 hover:underline"
+      {...props}
+    />
+  ),
   h1: (props) => (
     <h1
       className="[&:not(:first-child)]:mt-8 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
