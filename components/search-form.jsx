@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sidebar";
 
 export function SearchForm({ onSearch, ...props }) {
-  const {isLoading} = props;
+  const { isLoading } = props;
   const [search, setSearch] = useState("");
   const router = useRouter();
 
