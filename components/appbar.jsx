@@ -47,7 +47,7 @@ export function AppBar() {
         <SidebarTrigger />
       </div>
       <div className="grow h-4" />
-      <SearchForm isLoading={isLoading} />
+      <SearchForm />
       {user ? (
         <div className="flex pr-4">
           <Button variant="link" onClick={signOut} className="p-2">

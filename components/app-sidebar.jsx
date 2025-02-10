@@ -27,8 +27,6 @@ export function AppSidebar({ ...props }) {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("results", results);
-
   useEffect(() => {
     async function fetchPageData() {
       const categories = ["races", "classes", "continents"];
