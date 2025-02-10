@@ -44,7 +44,7 @@ export function AppSidebar({ ...props }) {
         const groupedData = {};
         querySnapshot.forEach((doc) => {
           const data = doc.data();
-          console.log("data", data);
+
           if (!groupedData[data.category]) {
             groupedData[data.category] = {
               title:
