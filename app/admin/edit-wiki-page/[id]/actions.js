@@ -1,6 +1,7 @@
 "use server";
 
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import { redirect } from "next/navigation";
 
 import {
@@ -8,6 +9,7 @@ import {
   getWikiPageData,
 } from "@/app/_lib/firebase/firestore.js";
 import { getAuthenticatedAppForUser } from "@/app/_lib/firebase/serverApp.js";
+import { uploadImageToStorage } from "@/app/_lib/firebase/storage.js";
 
 export async function submitWikiDetails(formData, id) {
   const { firebaseServerApp } = await getAuthenticatedAppForUser();
@@ -34,6 +36,21 @@ export async function fetchWikiDetails(id) {
   try {
     const startingData = getWikiPageData(getFirestore(firebaseServerApp), id);
     return startingData;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function uploadNewWikiImage(file, wikiPageId, filename) {
+  const { firebaseServerApp } = await getAuthenticatedAppForUser();
+
+  try {
+    await uploadImageToStorage(
+      getStorage(firebaseServerApp),
+      file,
+      wikiPageId,
+      filename
+    );
   } catch (error) {
     throw error;
   }
