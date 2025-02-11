@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/app/_lib/firebase/clientApp";
 import { Label } from "@/components/ui/label";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -15,6 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 
 export function SearchForm({ onSearch, ...props }) {
+  const { isLoading } = props;
   const [search, setSearch] = useState("");
   const router = useRouter();
 
