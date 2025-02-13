@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
+import ImageDropzone from "@/components/dropzone";
 import { submitWikiDetails, fetchWikiDetails } from "./actions";
 import { onAuthStateChanged } from "@/app/_lib/firebase/auth";
 
@@ -229,6 +230,7 @@ export default function EditWikiPage({ params }) {
           />
           {errors.contents && <p className="text-red-500">{errors.contents}</p>}
         </div>
+        <ImageDropzone />
         <Button type="submit">Save changes</Button>
       </form>
     </div>
