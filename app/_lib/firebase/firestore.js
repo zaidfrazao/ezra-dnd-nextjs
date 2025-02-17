@@ -2,13 +2,13 @@ import {
   addDoc,
   collection,
   doc,
+  deleteDoc,
   getDoc,
   getDocs,
   setDoc,
   query,
   where,
 } from "firebase/firestore";
-
 import { db } from "@/app/_lib/firebase/clientApp";
 
 export async function addWikiPage(database = db, wikiPageInfo) {
@@ -47,4 +47,14 @@ export async function getWikiPageBySlug(database = db, slug) {
   });
 
   return pageData;
+}
+
+export async function deleteWikiPage(database = db, id) {
+  try {
+    const deletePage = doc(database, "wikiPages", id);
+    await deleteDoc(deletePage);
+    console.log(`Wiki page with slug "${id}" has been deleted.`);
+  } catch (error) {
+    console.error("Error deleting wiki page:", error);
+  }
 }

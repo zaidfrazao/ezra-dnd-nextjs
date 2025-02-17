@@ -160,6 +160,8 @@ export default function EditWikiPage({ params }) {
     );
   }
 
+  const id = params.id;
+
   return (
     <div className="space-y-6 p-4 pb-16 md:p-10 md:block flex-1 lg:max-w-2xl">
       <div className="space-y-0.5">
@@ -230,7 +232,7 @@ export default function EditWikiPage({ params }) {
           />
           {errors.contents && <p className="text-red-500">{errors.contents}</p>}
         </div>
-        <ImageDropzone />
+        <ImageDropzone id={id} />
         <Button type="submit">Save changes</Button>
       </form>
     </div>

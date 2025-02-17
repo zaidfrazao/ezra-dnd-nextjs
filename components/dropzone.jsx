@@ -1,13 +1,13 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
-import { uploadNewWikiImage } from "../app/admin/edit-wiki-page/[id]/actions";
+import { uploadNewWikiImage } from "@/app/admin/edit-wiki-page/[id]/actions";
 import { Separator } from "@/components/ui/separator";
 
-export default function ImageDropzone({ wikiPageId }) {
+export default function ImageDropzone({ id }) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     onDrop: async (acceptedFiles) => {
       for (const file of acceptedFiles) {
-        await uploadNewWikiImage(file, wikiPageId, file.name);
+        await uploadNewWikiImage(file, id, file.name);
       }
     },
   });
