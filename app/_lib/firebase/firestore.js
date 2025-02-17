@@ -48,3 +48,22 @@ export async function getWikiPageBySlug(database = db, slug) {
 
   return pageData;
 }
+
+export async function addBugReport(database = db, reportDetails) {
+  const docRef = await addDoc(
+    collection(database, "bugReports"),
+    reportDetails
+  );
+
+  return docRef.id;
+}
+
+export async function deleteWikiPage(database = db, id) {
+  try {
+    const deletePage = doc(database, "wikiPages", id);
+    await deleteDoc(deletePage);
+    console.log(`Wiki page with slug "${id}" has been deleted.`);
+  } catch (error) {
+    console.error("Error deleting wiki page:", error);
+  }
+}
