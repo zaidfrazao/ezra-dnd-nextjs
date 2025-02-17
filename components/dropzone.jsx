@@ -13,9 +13,7 @@ export default function ImageDropzone({ wikiPageId }) {
   });
 
   const files = acceptedFiles
-    .map(
-      (file) => `<li key=${file.path}>${file.path} - ${file.size} bytes</li>`
-    )
+    .map((file) => `<li key=File Name: ${file.name})</li>`)
     .join("");
 
   return (
@@ -24,11 +22,9 @@ export default function ImageDropzone({ wikiPageId }) {
       className="flex items-center justify-center border-dashed border-2 border-black"
     >
       <section className="container">
-        <div className="dropzone">
+        <div className="flex items-center justify-center dropzone">
           <input {...getInputProps()} />
-          <p className="flex items-center">
-            Drag 'n' drop some files here, or click to select files
-          </p>
+          <p>Drag 'n' drop some files here, or click to select files</p>
         </div>
         <Separator />
         <aside>
