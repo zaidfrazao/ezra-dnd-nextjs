@@ -48,3 +48,12 @@ export async function getWikiPageBySlug(database = db, slug) {
 
   return pageData;
 }
+
+export async function addBugReport(database = db, reportDetails) {
+  const docRef = await addDoc(
+    collection(database, "bugReports"),
+    reportDetails
+  );
+
+  return docRef.id;
+}
