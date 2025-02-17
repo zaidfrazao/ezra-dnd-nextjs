@@ -3,14 +3,16 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { AccountOptionsMenu } from "@/components/account-options-dropdown";
 import { Button } from "@/components/ui/button";
+import { BugReportDialog } from "@/components/bug-report-dialog";
 import { SearchForm } from "@/components/search-form";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { signOut, onAuthStateChanged } from "@/app/_lib/firebase/auth";
 
 export function AppBar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -50,13 +52,11 @@ export function AppBar() {
       <SearchForm />
       {user ? (
         <div className="flex pr-4">
-          <Button variant="link" onClick={signOut} className="p-2">
-            Sign out
-          </Button>
-          <Avatar>
-            <AvatarImage src={"/human-artificer.jpg"} />
-            <AvatarFallback></AvatarFallback>
-          </Avatar>
+          <AccountOptionsMenu
+            signOut={signOut}
+            reportBug={() => setIsOpen(true)}
+            email={user ? user.email : ""}
+          />
         </div>
       ) : (
         <div className="flex pr-4">
@@ -65,6 +65,11 @@ export function AppBar() {
           </Button>
         </div>
       )}
+      <BugReportDialog
+        isOpen={isOpen}
+        closeDialog={() => setIsOpen(false)}
+        user={user}
+      />
     </header>
   );
 }
